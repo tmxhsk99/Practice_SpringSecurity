@@ -9,7 +9,9 @@
 		class="org.zerock.security.CustomAccessDeniedHandler" />
 	<bean id="customLoginSuccess"
 		class="org.zerock.security.CustomLoginSuccessHandler" />
-
+	<bean id="customPasswordEncoder"
+		class="org.zerock.security.CustomNoOpPasswordEncoder"></bean>
+	
 	<security:http>
 		<security:intercept-url pattern="/sample/all" access="permitAll"/>
 		
@@ -32,7 +34,11 @@
 
 		<security:authentication-provider>
 	
-			<security:jdbc-user-service data-source-ref="dataSource"/>
+			<security:jdbc-user-service 
+			data-source-ref="dataSource"/>
+			
+			<security:password-encoder
+			ref="customPasswordEncoder"/>
 		</security:authentication-provider>
 
 	</security:authentication-manager>
