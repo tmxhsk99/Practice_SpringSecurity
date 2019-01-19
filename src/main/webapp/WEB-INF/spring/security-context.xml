@@ -14,8 +14,8 @@
 	<bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="bcryptPasswordEncoder"/>
 	
 	<bean id="customUserDetailsService" class="org.zerock.security.CustomUserDetailsService"></bean>
-	
-	<security:http>
+
+	<security:http >
 		<security:intercept-url pattern="/sample/all" access="permitAll"/>
 		
 		<security:intercept-url
@@ -34,7 +34,6 @@
 	</security:http>
 
 	<security:authentication-manager>
-
 		<security:authentication-provider
 		 user-service-ref="customUserDetailsService">
 	
@@ -44,5 +43,6 @@
 		</security:authentication-provider>
 			
 	</security:authentication-manager>
+
 
 </beans>
